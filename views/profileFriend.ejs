@@ -15,15 +15,18 @@
 <body>
 
     <section class="seccion-perfil-usuario">
-        <form action="/searchUsers" method="post" target="_blank">
-            <p class="mb-0">
-              Buscar miembros: 
-              <input class="form-control mr-sm-2" aria-label="Search" type="search" name="search_user" >
-              <input type="submit" class="btn btn-outline-success my-2 my-sm-0" value="Buscar">
-          
-            </p>
-          
-          </form>
+        <nav class="navbar navbar-light bg-light justify-content-between container-fluid">
+            <a class="navbar-brand" href="/profile">Mi perfil</a>
+            <form action="/searchUsers" method="post" target="_blank">
+                <p class="mb-0">
+                Buscar miembros: 
+                <input class="form-control mr-sm-2" aria-label="Search" type="search" name="search_user" >
+                <input type="submit" class="btn btn-outline-success my-2 my-sm-0" value="Buscar">
+            
+                </p>
+            
+            </form>
+        </nav>
         <div class="perfil-usuario-header">
             
             <div class="perfil-usuario-portada">

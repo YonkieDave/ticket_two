@@ -56,14 +56,29 @@ module.exports = (app) => {
 
     });
     app.get('/friends',middLogin.userAuth, async (req, res) => {
-        let user_id = req.cookies.user_id;
-        let frnds = await profileController.getUserFriends(user_id);
-        let result = await profileController.userFriends(frnds);
+        
+        try {
+            let user_id = req.cookies.user_id;
+            let frnds = await profileController.getUserFriends(user_id);
+            console.log("Resultado FRIENDS --> ", frnds,frnds[0][0].user_id_friend);
+            let arrFriends =[];
+            for(let i=0; i<frnds[0].length; i++){
+                arrFriends.push(frnds[0][i].user_id_friend);
+            }
+            console.log( "Array de amigos  ",arrFriends);
+            let convertedArrFrnds = profileController.convertedArr(arrFriends); 
 
-        console.log("Resultado para el usuario --> ", result);
-        res.render('friends',{
-            friends:result
-        });
+            let result = await profileController.userFriends(convertedArrFrnds);
+
+            console.log("Resultado para el usuario --> ", result);
+            res.render('friends',{
+                friends:result
+            });
+                
+        } catch (error) {
+            return console.log("error aqui --> ", error);    
+        }
+
         
 
     });
@@ -72,8 +87,8 @@ module.exports = (app) => {
         let result = await profileController.userDataProfile(req.params.id);
 
         console.log("Resultado para el usuario --> ", result);
-        res.render('friends',{
-            friends:result
+        res.render('profileFriend',{
+            profileFriend:result
         });
 
     });

@@ -14,7 +14,7 @@
                   <th class="title" scope="col">NOMBRE</th>
                   <th class="title" scope="col">EDUCACIÓN</th>
                   <th class="title" scope="col">CORREO</th>
-                  <th class="title" scope="col">PAÍS</th>
+                  <th class="title" scope="col">ESTATUS</th>
                 </tr>
               </thead>
               <tbody>
@@ -25,11 +25,11 @@
                 <td class="td_body"><%= friends[0][i].user_name %> <%= friends[0][i].user_paternal %> <%= friends[0][i].user_maternal %></td>
                 <td class="td_body"><%= friends[0][i].user_studies %></td>
                 <td class="td_body"><%= friends[0][i].user_email %></td>
-                <td class="td_body"><%= friends[0][i].user_city%></td>
+                <td class="td_body"><%= friends[0][i].status%></td>
                 
                   
                   <td class="td_body">
-                    <a href="/addFriend/'<%= friends[0][i].user_id%>'" class="btn btn-outline-info">Ver perfil</a>
+                    <a href="/profileFriend/'<%= friends[0][i].user_id%>'" class="btn btn-outline-info">Ver perfil</a>
                   </td>
                   
                 </tr>

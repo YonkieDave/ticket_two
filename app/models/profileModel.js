@@ -61,16 +61,22 @@ module.exports.getUserFriends = async (id) => {
                                             JOIN user_friends uf
                                             ON u.user_id = uf.user_id     
                                             WHERE uf.user_id  = ${id}
-                                            GROUP BY uf.user_id_friend `);                                     
-        return result;
-    } catch (err) {
-        throw new Error(err)
+                                            GROUP BY uf.user_id_friend `);                                
+          /*  let result = await sequelize.query(`SELECT * FROM users `);
+                                            return result;*/
+                                            return result;
+    } catch  {
+       return "Error";
     }
 }
 module.exports.userFriends = async (frns) => {
     try {
        
-        let result = await sequelize.query(`SELECT * FROM users WHERE user_id  IN(${JSON.stringify(frns)})`);                                     
+        /*let result = await sequelize.query(`SELECT u.user_id,u.user_name,u.user_paternal,u.user_maternal,u.user_studies,u.user_email,status,uf.status
+                                            FROM users u JOIN user_friends uf ON u.user_id = uf.user_id 
+                                            WHERE u.user_id  IN(${frns})`);     */
+        let result = await sequelize.query(`SELECT user_id,user_name,user_paternal,user_maternal,user_studies,user_email
+        FROM users WHERE user_id  IN(${frns})`);                                                                      
         return result;
     } catch (err) {
         throw new Error(err)

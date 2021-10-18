@@ -35,17 +35,22 @@ module.exports.getUserFriends = async (id) => {
 }
 
 module.exports.userFriends = async (arr) => {
+    
     try {
-        let arrFriends =[];
-        for(let i=0; friends[0].length; i++){
-            arrFriends.push(arr[0][i].user_id_friend);
-        }
-        console.log( "Array de amigos  ",arr);
-        let result = await profileDB.userFriends(arrFriends);
+        let result = await profileDB.userFriends(arr);
         console.log("Resultado de amigos ", result)
         return result;
     } catch (err) {
         throw new Error('DB Error')
     }
 }
+module.exports.convertedArr = (arr) => {
+    arr =`${arr}`;
+    
+    let id = arr.replace('[', '(')
+    id=arr.replace(']', ')')
+    console.log("array con parentesis --> ",id);
+    return id;
+}
+
 
