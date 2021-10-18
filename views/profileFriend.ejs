@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil <%= profile[0][0].user_name %></title>
+    <title>Perfil <%= profileFriend[0][0].user_name %></title>
     <link rel="stylesheet" type="text/css" href="/css/profile.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -40,23 +40,23 @@
                 </a>
             </div>
         </div>
-        <% console.log("variable profile[0][0] en la vista del perfil ", profile[0][0]); %>
+        <% console.log("variable profile[0][0] en la vista del perfil ", profileFriend[0][0]); %>
         <div class="perfil-usuario-body">
             <div class="perfil-usuario-bio">
-                <h3 class="titulo"><%= profile[0][0].user_name %>  <%= profile[0][0].user_paternal %>  <%= profile[0][0].user_maternal %> </h3>
-                <p class="texto"><%= profile[0][0].user_about %></p>
+                <h3 class="titulo"><%= profileFriend[0][0].user_name %>  <%= profileFriend[0][0].user_paternal %>  <%= profileFriend[0][0].user_maternal %> </h3>
+                <p class="texto"><%= profileFriend[0][0].user_about %></p>
             </div>
             <div class="perfil-usuario-footer">
                 <ul class="lista-datos">
-                    <li><i class="icono fas fa-map-signs"></i> Ciudad: <%= profile[0][0].user_city%></li>
-                    <li><i class="icono fas fa-envelope-square"></i> Email: <%= profile[0][0].user_email%></li>
-                    <li><i class="icono fas fa-graduation-cap"></i> Estudios: <%= profile[0][0].user_studies%></li>
-                    <li><i class="icono fas fa-language"></i> Idiomas: <%= profile[0][0].user_lenguajes%></li>
+                    <li><i class="icono fas fa-map-signs"></i> Ciudad: <%= profileFriend[0][0].user_city%></li>
+                    <li><i class="icono fas fa-envelope-square"></i> Email: <%= profileFriend[0][0].user_email%></li>
+                    <li><i class="icono fas fa-graduation-cap"></i> Estudios: <%= profileFriend[0][0].user_studies%></li>
+                    <li><i class="icono fas fa-language"></i> Idiomas: <%= profileFriend[0][0].user_lenguajes%></li>
                 </ul>
                 <ul class="lista-datos">
-                    <li><i class="icono fas fa-calendar-alt"></i> Edad: <%= profile[0][0].user_age%></li>
-                    <li><i class="icono fas fa-palette"></i> Hobbies: <%= profile[0][0].user_hobbies%></li>
-                    <li><i class="icono fas fa-user-check"></i> linkedin: <%= profile[0][0].user_linkedin%></li>
+                    <li><i class="icono fas fa-calendar-alt"></i> Edad: <%= profileFriend[0][0].user_age%></li>
+                    <li><i class="icono fas fa-palette"></i> Hobbies: <%= profileFriend[0][0].user_hobbies%></li>
+                    <li><i class="icono fas fa-user-check"></i> linkedin: <%= profileFriend[0][0].user_linkedin%></li>
                     
                 </ul>
             </div>
@@ -66,7 +66,7 @@
                 <a href="" class="boton-redes instagram fab fa-instagram"><i class="icon-instagram"></i></a>
             </div>-->
             <div class="redes-sociales">
-                <i class="fas fa-user-friends"><a href="/friends" class="btn-primary">Amigos</a></i>
+                <i class="fas fa-user-friends"><a href="" class="btn-primary">Amigos</a></i>
             </div>
         </div>
     </section>

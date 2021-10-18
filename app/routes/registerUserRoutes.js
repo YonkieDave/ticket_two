@@ -1,6 +1,7 @@
 const registerController = require('../controllers/registerUserController');
 const registerMidd = require('../../middlewares/registerMidd');
 
+
 module.exports = (app) => {
 
     app.get('/register', (req, res) =>{

@@ -14,6 +14,7 @@ const sequelize = require('./db/connection');
 //Routes
 const loginRoutes = require('./app/routes/loginRoutes');
 const registerUserRoutes = require('./app/routes/registerUserRoutes');
+const profileRoutes = require('./app/routes/profileRoutes');
 
 //urlencode captura los datos del formulario
 app.use(express.urlencoded({extended:true}));
@@ -44,3 +45,4 @@ async function serverStart() {
   
   loginRoutes(app);
   registerUserRoutes(app);
+  profileRoutes(app); 

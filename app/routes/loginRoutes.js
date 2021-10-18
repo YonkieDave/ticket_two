@@ -4,6 +4,9 @@ const jwt = require('jsonwebtoken');
 
 module.exports = (app) => {
 
+    app.get('/', (req, res) => {
+        res.redirect('/login');
+    });
     app.get('/login', (req, res) => {
         res.render('login');
     });
@@ -24,6 +27,7 @@ module.exports = (app) => {
             httpOnly: true
         };
         res.cookie('session_jwt', token, cookiesOptions);
+        res.cookie('user_id', id, cookiesOptions);
             
          res.render('login',{
             alert:true,
@@ -32,7 +36,7 @@ module.exports = (app) => {
             alertMessage: "Usuario Logueado con exito",
             showConfirmButton: false,
             timer: 1000,
-            ruta:'budgets',
+            ruta:'profile',
          }); 
         } catch (error) {
             res.render('login',{

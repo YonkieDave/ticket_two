@@ -1,0 +1,59 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<body>
+    <div class="form-control mr-sm-2">
+        <a href="/profile">Regresar al perfil</a>
+    </div>
+    <div class="content">
+        <div class="card">
+     
+            <table id="budget_table">
+              <thead class="header">
+                <tr>
+                  <th class="title" scope="col">NOMBRE</th>
+                  <th class="title" scope="col">EDUCACIÓN</th>
+                  <th class="title" scope="col">CORREO</th>
+                  <th class="title" scope="col">PAÍS</th>
+                </tr>
+              </thead>
+              <tbody>
+                <%
+                  for(let i = 0; i < friends[0].length; i++) { 
+                     %>
+                     <tr>
+                <td class="td_body"><%= friends[0][i].user_name %> <%= friends[0][i].user_paternal %> <%= friends[0][i].user_maternal %></td>
+                <td class="td_body"><%= friends[0][i].user_studies %></td>
+                <td class="td_body"><%= friends[0][i].user_email %></td>
+                <td class="td_body"><%= friends[0][i].user_city%></td>
+                
+                  
+                  <td class="td_body">
+                    <a href="/addFriend/'<%= friends[0][i].user_id%>'" class="btn btn-outline-info">Ver perfil</a>
+                  </td>
+                  
+                </tr>
+              <% }%>
+              </tbody>
+            </table>
+          
+          </div>
+          
+        </body>
+    </div>
+
+</body>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<% if(typeof  alert != 'undefined'){ %>
+         <script>
+            Swal.fire({
+               title: '<%= alertTitle %>',
+               text: '<%= alertMessage %>',
+               icon: '<%= alertIcon%>',
+               showConfirmButton: '<%= showConfirmButton%>',
+               timer: '<%= timer %>'
+            }).then(()=>{
+               window.location = '/<%= ruta %>'
+            })
+         </script>
+      <% } %>

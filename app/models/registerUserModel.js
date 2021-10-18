@@ -3,7 +3,6 @@ const sequelize = require('../../db/connection');
 module.exports.userRegister = async (newUser) => {
     try {     
         let result = await sequelize.query(`INSERT INTO users (user_name,
-            user_profile_image,
             user_paternal,
             user_maternal,
             user_email,
@@ -20,7 +19,6 @@ module.exports.userRegister = async (newUser) => {
             create_date ,
             update_date) VALUES
             ('${newUser.name}',
-            'AQUI VA LA IMAGEN',
             '${newUser.lastname_paternal}',
             '${newUser.lastname_maternal}',
             '${newUser.email}',
@@ -35,12 +33,38 @@ module.exports.userRegister = async (newUser) => {
             '${newUser.hobbies}',
             '${newUser.about}',
             GETDATE(),
-            GETDATE())`);
-            return result;
+            GETDATE());`);
+            
+            return await result;
     } catch (error) {
         return "error";
     }
 }
+module.exports.getUserId = async (email) => {
+    let idNewUser = await sequelize.query(`SELECT user_id FROM users WHERE user_email = '${email.user_email}'`);
+    return  idNewUser; 
+}
+
+module.exports.userRegisterImage = async (id,image) => {
+   try {
+    let result = sequelize.query(
+        `INSERT INTO user_images (user_id, 
+            image_name,
+            image_content,
+            image_extention,
+            create_date,
+            update_date) VALUES
+            ('${id}',
+            '${image}',
+            '${image}',
+            '${image}',
+            GETDATE(),
+            GETDATE())`);
+            return result;
+   
+   } catch (error) {
+       return error;
+   }}
 
 module.exports.userAlreadyExists = async (newUser) => {
     try {     
