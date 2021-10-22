@@ -11,11 +11,12 @@ module.exports.userDataProfile = async (id) => {
         throw new Error(err)
     }
 }
-module.exports.searchUsers = async (usr) => {
+module.exports.searchUsers = async (usr,id) => {
     try {
        
-        let result = await sequelize.query(`SELECT * FROM users WHERE user_name LIKE '%${usr}%' 
-                                            OR user_paternal LIKE '%${usr}%' OR user_maternal LIKE '%${usr}%'`)
+        let result = await sequelize.query(`SELECT * FROM users WHERE (user_name LIKE '%${usr}%' 
+                                            OR user_paternal LIKE '%${usr}%' OR user_maternal LIKE '%${usr}%')
+                                            AND user_id NOT IN(${id})`)
         return result;
     } catch (err) {
         throw new Error(err)

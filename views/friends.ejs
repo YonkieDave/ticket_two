@@ -3,43 +3,20 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <body>
     <div class="form-control mr-sm-2">
-        <a href="/profile">Regresar al perfil</a>
+        <a class="btn btn-primary" href="/profile">Regresar al perfil</a>
     </div>
-    <div class="content">
-        <div class="card">
-     
-            <table id="budget_table">
-              <thead class="header">
-                <tr>
-                  <th class="title" scope="col">NOMBRE</th>
-                  <th class="title" scope="col">EDUCACIÓN</th>
-                  <th class="title" scope="col">CORREO</th>
-                  <th class="title" scope="col">ESTATUS</th>
-                </tr>
-              </thead>
-              <tbody>
-                <%
-                  for(let i = 0; i < friends[0].length; i++) { 
-                     %>
-                     <tr>
-                <td class="td_body"><%= friends[0][i].user_name %> <%= friends[0][i].user_paternal %> <%= friends[0][i].user_maternal %></td>
-                <td class="td_body"><%= friends[0][i].user_studies %></td>
-                <td class="td_body"><%= friends[0][i].user_email %></td>
-                <td class="td_body"><%= friends[0][i].status%></td>
-                
-                  
-                  <td class="td_body">
-                    <a href="/profileFriend/'<%= friends[0][i].user_id%>'" class="btn btn-outline-info">Ver perfil</a>
-                  </td>
-                  
-                </tr>
-              <% }%>
-              </tbody>
-            </table>
-          
+    <div class="card-group mt-3 container display: flex; justify-content:space-between" >
+      <% for(let i = 0; i < friends[0].length; i++) {  %>
+          <div class="card text-center border-info" style="width: 18rem;" >
+            <img class="card-img-top" src="..." alt="Profile image">
+            <div class="card-body">
+              <h5 class="card-title"><%= friends[0][i].user_name %> <%= friends[0][i].user_paternal %> <%= friends[0][i].user_maternal %></h5>
+              <p class="card-text"><%= friends[0][i].user_studies %> <br> <%= friends[0][i].user_email %></p>
+              <a href="/profileFriend/'<%= friends[0][i].user_id%>'" class="btn btn-outline-info">Ver perfil</a>
+            </div>
           </div>
-          
-        </body>
+       
+      <% } %>
     </div>
 
 </body>

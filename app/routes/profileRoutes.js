@@ -18,8 +18,9 @@ module.exports = (app) => {
 
     });
     app.post('/searchUsers',middLogin.userAuth, async (req, res) => {
-        console.log("Se buscará el usuario: ", req.body.search_user)
-        let result = await profileController.searchUsers(req.body.search_user);
+        console.log("Se buscará el usuario: ", req.body.search_user);
+        let id_user = req.cookies.user_id;
+        let result = await profileController.searchUsers(req.body.search_user, id_user);
 
         console.log("Resultado para el usuario --> ", result);
         res.render('members',{
@@ -39,7 +40,8 @@ module.exports = (app) => {
         let result = await profileController.addFriend(user_id,id_new_friend);
 
         console.log("Resultado para el usuario --> ", result);
-        res.render('profile',{
+        res.render('members',{
+            members:['','','','','','','',''],
             alert:true,
             alertTitle: "Agregado ",
             alertIcon: "succes",
@@ -60,20 +62,34 @@ module.exports = (app) => {
         try {
             let user_id = req.cookies.user_id;
             let frnds = await profileController.getUserFriends(user_id);
-            console.log("Resultado FRIENDS --> ", frnds,frnds[0][0].user_id_friend);
-            let arrFriends =[];
-            for(let i=0; i<frnds[0].length; i++){
-                arrFriends.push(frnds[0][i].user_id_friend);
+            //console.log("Resultado FRIENDS --> ", frnds,frnds[0][0].user_id_friend);
+            if (frnds[0].length <= 0) {
+                res.render('friends',{
+                    friends:['','','','',''],
+                    alert:true,
+                    alertTitle: "Ooooops !!! ",
+                    alertIcon: "alert",
+                    alertMessage: "Aun no tienes amigos, prueba buscar y agregar a uno",
+                    showConfirmButton: true,
+                    timer: '',
+                    ruta:'profile',
+                });
+            } else {
+                let arrFriends =[];
+                for(let i=0; i<frnds[0].length; i++){
+                    arrFriends.push(frnds[0][i].user_id_friend);
+                }
+                console.log( "Array de amigos  ",arrFriends);
+                let convertedArrFrnds = profileController.convertedArr(arrFriends); 
+    
+                let result = await profileController.userFriends(convertedArrFrnds);
+    
+                console.log("Resultado para el usuario --> ", result);
+                res.render('friends',{
+                    friends:result
+                });
+                    
             }
-            console.log( "Array de amigos  ",arrFriends);
-            let convertedArrFrnds = profileController.convertedArr(arrFriends); 
-
-            let result = await profileController.userFriends(convertedArrFrnds);
-
-            console.log("Resultado para el usuario --> ", result);
-            res.render('friends',{
-                friends:result
-            });
                 
         } catch (error) {
             return console.log("error aqui --> ", error);    

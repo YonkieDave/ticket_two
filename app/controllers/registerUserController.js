@@ -4,9 +4,9 @@ module.exports.userRegister = async (newUser) => {
     try {
         let result = await registerDB.userRegister(newUser);
         let id = await registerDB.getUserId(newUser);
-        let image = await registerDB.userRegisterImage(id,newUser.image);
+        //let image = await registerDB.userRegisterImage(id,newUser.image);
 
-        return image;
+        return result;
     } catch (err) {
         throw new Error('DB Error')
     }

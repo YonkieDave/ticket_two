@@ -15,11 +15,11 @@
 <body>
 
     <section class="seccion-perfil-usuario">
-        <form action="/searchUsers" method="post" target="_blank">
+        <form action="/searchUsers" method="post" target="_blank" style="background-color:lightskyblue;">
             <p class="mb-0">
               Buscar miembros: 
-              <input class="form-control mr-sm-2" aria-label="Search" type="search" name="search_user" >
-              <input type="submit" class="btn btn-outline-success my-2 my-sm-0" value="Buscar">
+              <input class="form-control-sm container-md flex-fill display-1" aria-label="Search" type="search" name="search_user" >
+              <input type="submit" class="btn btn-outline-success flex-fill" value="Buscar">
           
             </p>
           
@@ -29,7 +29,7 @@
             <div class="perfil-usuario-portada">
                 <div class="perfil-usuario-avatar">
                     
-                    <!--<img src="http://localhost/multimedia/relleno/img-c9.png" alt="img-avatar">-->
+                  
                     <button type="button" class="boton-avatar">
                         <i class="far fa-image"></i>
                     </button>
@@ -60,17 +60,13 @@
                     
                 </ul>
             </div>
-            <!--<div class="redes-sociales">
-                <a href="" class="boton-redes facebook fab fa-facebook-f"><i class="icon-facebook"></i></a>
-                <a href="" class="boton-redes twitter fab fa-twitter"><i class="icon-twitter"></i></a>
-                <a href="" class="boton-redes instagram fab fa-instagram"><i class="icon-instagram"></i></a>
-            </div>-->
+         
             <div class="redes-sociales">
-                <i class="fas fa-user-friends"><a href="/friends" class="btn-primary">Amigos</a></i>
+                <i class="fas fa-user-friends"><a href="/friends" class="btn btn-primary">Amigos</a></i>
             </div>
         </div>
     </section>
-    <!--====  End of html  ====-->
+ 
 
 <div class="mis-redes" style="display: block;position: fixed;bottom: 1rem;left: 1rem; opacity: 0.5; z-index: 1000;">
     <p style="font-size: .75rem;">Redes Sociales</p>
@@ -81,7 +77,7 @@
         <a target="_blank" href=""><i class="fab fa-youtube"></i></a>
     </div>
 </div>
-<!--====  End of tarjeta  ====-->
+
 </body>
 <% if(typeof  alert != 'undefined'){ %>
     <script>

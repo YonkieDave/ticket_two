@@ -8,9 +8,9 @@ module.exports.userDataProfile = async (usr_id) => {
         throw new Error('DB Error')
     }
 }
-module.exports.searchUsers = async (usr) => {
+module.exports.searchUsers = async (usr,id) => {
     try {
-        let result = await profileDB.searchUsers(usr);
+        let result = await profileDB.searchUsers(usr,id);
         return result;
     } catch (err) {
         throw new Error('DB Error')
